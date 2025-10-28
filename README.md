@@ -26,7 +26,7 @@ O aplicativo consome a Steam Web API para obter os dados.
 
 ### Autenticação:
 
-* É preciso uma **chave de API (API Key)**, obtida da Steam, para fazer requisições. Essa chave é enviada como parâmetro `key` nas URLs das APIs.
+* É preciso uma **chave de API (API Key)**, para fazer requisições. Essa chave é enviada como parâmetro `key` nas URLs das APIs.
 
 ### Endpoints Utilizados:
 
