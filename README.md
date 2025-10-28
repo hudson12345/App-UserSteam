@@ -39,3 +39,5 @@ O aplicativo consome a Steam Web API para obter os dados.
     * **Função:** Lista os jogos que um usuário possui (só os 4 primeiros).
     * **Parâmetros:** `key`, `steamid`, `include_appinfo=1` para obter nomes e imagem dos jogos.
     * **Dados de Retorno:** `appid`, `name`, `playtime_forever`, `img_icon_url`, `rtime_last_played`.
+  
+### Fluxo do Aplicativo:
