@@ -33,17 +33,32 @@ O aplicativo consome a Steam Web API para obter os dados.
 1.  **`ISteamUser/GetPlayerSummaries/v0002/`**
     * Busca detalhes do perfil do usuário.
     * **Parâmetros:** `key`, `steamids` (ID do usuário).
-    * **Dados de Retorno:** `personaname` - String, `avatarfull` - String, `personastate` - Number(JSON)/int(Dart), `communityvisibilitystate` - Number(JSON)/int(Dart), `lastlogoff` - Number(JSON)/int(Dart), `profileurl` - String.
+    * **Dados de Retorno:**
+       * `personaname` - String: O nome de exibição (username) do jogador.
+       * `avatarfull` - String: A URL completa da imagem de avatar do usuário (184x184px).
+       * `personastate` - Number(JSON)/int(Dart): O status atual do usuário (0 - Offline, 1 - Online, 2 - Busy, 3 - Away, 4 - Snooze, 5 - looking to trade, 6 - looking to play, e se o perfil for privado, será sempre 0).
+       * `communityvisibilitystate` - Number(JSON)/int(Dart): Mostra a visibilidade do perfil (1: Privado, 3: Público).
+       * `lastlogoff` - Number(JSON)/int(Dart): O timestamp Unix da última vez que o usuário esteve online.
+       * `profileurl` - String: A URL completa para o perfil da Comunidade Steam do usuário.
 
 2.  **`IPlayerService/GetOwnedGames/v0001/`**
     * Lista os jogos que um usuário possui (só os 4 primeiros).
     * **Parâmetros:** `key`, `steamid`, `include_appinfo=1` para obter nomes e imagem dos jogos.
-    * **Dados de Retorno:** `appid` - Number(JSON)/int(Dart), `name` - String, `playtime_forever` - Number(JSON)/int(Dart), `img_icon_url` - String, `rtime_last_played` - Number(JSON)/int(Dart).
+    * **Dados de Retorno:**
+       * `appid` - Number(JSON)/int(Dart): O identificador único do jogo na Steam.
+       * `name` - String: O título do jogo.
+       * `playtime_forever` - Number(JSON)/int(Dart): O tempo total que o usuário jogou este jogo, em minutos.
+       * `img_icon_url` - String: O hash da URL completa do ícone do jogo..
+       * `rtime_last_played` - Number(JSON)/int(Dart): O timestamp Unix da última vez que o usuário jogou este jogo.
   
 ### Fluxo do Aplicativo:
 
-
 <img width="843" height="722" alt="Screenshot 2025-10-27 221709" src="https://github.com/user-attachments/assets/688bc1de-ff0f-45f8-bc34-deb2d2d15d49" />
+
+### Link do Figma:
+
+* [**Figma**](https://www.figma.com/design/Sx7GLDPfDfecRhYXeTA5Da/AppAPI?node-id=0-1&t=BE5jitiHRgEvnU2v-1)
+
 
 ## Telas da Aplicação na Wiki:
 
