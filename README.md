@@ -41,3 +41,13 @@ O aplicativo consome a Steam Web API para obter os dados.
     * **Dados de Retorno:** `appid`, `name`, `playtime_forever`, `img_icon_url`, `rtime_last_played`.
   
 ### Fluxo do Aplicativo:
+
+
+<img width="843" height="722" alt="Screenshot 2025-10-27 221709" src="https://github.com/user-attachments/assets/688bc1de-ff0f-45f8-bc34-deb2d2d15d49" />
+
+## Telas da Aplicação na Wiki:
+
+* [**Tela Inicial**](https://github.com/hudson12345/App-UserSteam/wiki/Página-Inicial)
+* [**Tela de Perfil**](https://github.com/hudson12345/App-UserSteam/wiki/Perfil)
+* [**Tela de Jogos**](https://github.com/hudson12345/App-UserSteam/wiki/Jogos)
+* [**Tela de Créditos**](https://github.com/hudson12345/App-UserSteam/wiki/Créditos)
