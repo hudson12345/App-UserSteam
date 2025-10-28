@@ -2,7 +2,7 @@
 
 ## Sobre o Aplicativo
 
-O Perfis Steam é um aplicativo mobile desenvolvido em Flutter para Android. Ele permite aos usuários buscar e ver informações de perfis da Steam, incluindo detalhes do usuário e uma lista dos jogos que ele possui.
+O Perfis Steam é um aplicativo mobile desenvolvido em Flutter para Android. Ele permite que os usuários busquem e vejam informações de perfis da Steam, incluindo detalhes do usuário e uma lista dos jogos que ele possui.
 
 ## Funcionalidades Principais
 
