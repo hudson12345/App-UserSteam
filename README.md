@@ -31,14 +31,14 @@ O aplicativo consome a Steam Web API para obter os dados.
 ### Endpoints Utilizados:
 
 1.  **`ISteamUser/GetPlayerSummaries/v0002/`**
-    * **Função:** Busca detalhes do perfil do usuário.
+    * Busca detalhes do perfil do usuário.
     * **Parâmetros:** `key`, `steamids` (ID do usuário).
-    * **Dados de Retorno:** `personaname`, `avatarfull`, `personastate`, `communityvisibilitystate`, `lastlogoff`, `profileurl`.
+    * **Dados de Retorno:** `personaname` - String, `avatarfull` - String, `personastate` - Number(JSON)/int(Dart), `communityvisibilitystate` - Number(JSON)/int(Dart), `lastlogoff` - Number(JSON)/int(Dart), `profileurl` - String.
 
 2.  **`IPlayerService/GetOwnedGames/v0001/`**
-    * **Função:** Lista os jogos que um usuário possui (só os 4 primeiros).
+    * Lista os jogos que um usuário possui (só os 4 primeiros).
     * **Parâmetros:** `key`, `steamid`, `include_appinfo=1` para obter nomes e imagem dos jogos.
-    * **Dados de Retorno:** `appid`, `name`, `playtime_forever`, `img_icon_url`, `rtime_last_played`.
+    * **Dados de Retorno:** `appid` - Number(JSON)/int(Dart), `name` - String, `playtime_forever` - Number(JSON)/int(Dart), `img_icon_url` - String, `rtime_last_played` - Number(JSON)/int(Dart).
   
 ### Fluxo do Aplicativo:
 
