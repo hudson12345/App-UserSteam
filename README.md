@@ -1,4 +1,8 @@
-# Perfis Steam
+# Perfil Steam
+
+## Integrantes
+- **Hudson Araujo Barreiro**
+- **Enzo Luciano**
 
 ## Sobre o Aplicativo
 
