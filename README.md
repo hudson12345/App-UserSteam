@@ -1,7 +1,5 @@
 # Perfil Steam
 
-# Projeto
-
 ## Integrantes
 - **Hudson Araujo Barreiro**
 - **Enzo Luciano**
