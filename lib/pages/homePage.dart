@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final respo = Responsive(context);
     return Scaffold(
-      appBar: Appbar(nome: "Perfis Steam"),
+      appBar: Appbar(nome: "Perfil Steam"),
       backgroundColor: Color.fromARGB(255, 35, 72, 147),
       body: Center(
         child: Padding(
