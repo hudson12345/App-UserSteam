@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
   final String nome;
 
-  const Appbar({required this.nome});
+  const Appbar({super.key, required this.nome});
 
   @override
   Widget build(BuildContext context) {

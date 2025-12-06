@@ -1,8 +1,9 @@
+// listaJogos.dart
 class Listajogos {
   String nome;
   String img;
-  String data;
-  int horas;
+  String data; // Data da ultima vez jogado
+  int horas; // Total de horas
 
   Listajogos({
     required this.nome,
@@ -12,33 +13,5 @@ class Listajogos {
   });
 }
 
-final List<Listajogos> listajogos = [
-  Listajogos(
-    nome: "Counter-Strike 2",
-    img:
-        "https://corsproxy.io/?https://www.freetogame.com/g/452/thumbnail.jpg",
-    data: "25/02/2025",
-    horas: 25,
-  ),
-  Listajogos(
-    nome: "Counter-Strike 2",
-    img:
-        "https://corsproxy.io/?https://t.ctcdn.com.br/KQ5SAI2QpmNNcdjpOOWV4uSEgDo=/640x360/smart/i967465.jpeg",
-    data: "25/02/2025",
-    horas: 25,
-  ),
-  Listajogos(
-    nome: "Counter-Strike 2",
-    img:
-        "https://corsproxy.io/?https://t.ctcdn.com.br/KQ5SAI2QpmNNcdjpOOWV4uSEgDo=/640x360/smart/i967465.jpeg",
-    data: "25/02/2025",
-    horas: 25,
-  ),
-  Listajogos(
-    nome: "Counter-Strike 2",
-    img:
-        "https://corsproxy.io/?https://t.ctcdn.com.br/KQ5SAI2QpmNNcdjpOOWV4uSEgDo=/640x360/smart/i967465.jpeg",
-    data: "25/02/2025",
-    horas: 25,
-  ),
-];
+// Lista vazia inicialmente, para ser preenchida com a API
+List<Listajogos> listajogos = [];

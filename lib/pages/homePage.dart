@@ -1,8 +1,11 @@
+// homePage.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_responsivity_widget/flutter_responsivity_widget.dart';
 import 'package:perfil_steam/classes/appBar.dart';
 import 'package:perfil_steam/pages/perfil.dart';
 import 'creditos.dart';
+
+const String steamApiKey = "F38ED750FF2696F972F7BD9F63A732B7"; 
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +15,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Controlador para pegar o texto que o usuario digita
+  final TextEditingController _idController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final respo = Responsive(context);
@@ -26,14 +32,15 @@ class _HomePageState extends State<HomePage> {
             children: [
               Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 60,
                     width: respo.wp(80),
                     child: TextField(
+                      controller: _idController, // Conecta o controlador
                       style: TextStyle(fontSize: 16, color: Colors.black),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.search_rounded),
-                        hintText: "Digite o ID do perfil",
+                        hintText: "Digite o ID do perfil (Ex: 765611...)",
                         iconColor: Colors.black,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(50),
@@ -54,10 +61,16 @@ class _HomePageState extends State<HomePage> {
                     width: respo.wp(50),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Perfil()),
-                        );
+                        // Verifica se o campo não está vazio
+                        if (_idController.text.isNotEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              // Passa o ID digitado para a tela de Perfil
+                              builder: (context) => Perfil(steamId: _idController.text),
+                            ),
+                          );
+                        }
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: Color.fromARGB(210, 74, 73, 73),

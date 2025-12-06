@@ -1,14 +1,99 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:perfil_steam/classes/appBar.dart';
+import 'package:perfil_steam/pages/homePage.dart';
 import 'package:perfil_steam/pages/jogos.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class Perfil extends StatelessWidget {
-  const Perfil({super.key});
+class Perfil extends StatefulWidget {
+  final String steamId;
+
+  const Perfil({super.key, required this.steamId});
+
+  @override
+  State<Perfil> createState() => _PerfilState();
+}
+
+class _PerfilState extends State<Perfil> {
+  String nomeUsuario = "Carregando...";
+  String avatarUrl = "https://wallpapers.com/images/hd/best-profile-pictures-wqm0z83avja0y31c.jpg";
+  String status = "Verificando...";
+  String visibilidade = "...";
+  String profileUrl = "...";
+  String ultimoLogin = "...";
+  Color corStatus = Colors.grey;
+
+  @override
+  void initState() {
+    super.initState();
+    carregarPerfil();
+  }
+
+  Future<void> carregarPerfil() async {
+    final url = Uri.parse(
+        "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=$steamApiKey&steamids=${widget.steamId}");
+
+    try {
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final dados = jsonDecode(response.body);
+        
+        // Verifica se a lista de jogadores não está vazia
+        if (dados['response']['players'].isNotEmpty) {
+          final player = dados['response']['players'][0];
+
+          setState(() {
+            nomeUsuario = player['personaname'];
+            avatarUrl = player['avatarfull'];
+            profileUrl = player['profileurl'];
+
+            int estado = player['personastate'];
+            if (estado == 0) {
+              status = "Offline";
+              corStatus = Colors.grey;
+            } else if (estado == 1) {
+              status = "Online";
+              corStatus = Color.fromARGB(255, 29, 161, 57);
+            } else {
+              status = "Jogando/Ocupado";
+              corStatus = const Color.fromARGB(255, 60, 165, 250);
+            }
+
+            if (player['communityvisibilitystate'] == 3) {
+              visibilidade = "Perfil Público";
+            } else {
+              visibilidade = "Perfil Privado";
+            }
+
+            if (player['lastlogoff'] != null) {
+              var date = DateTime.fromMillisecondsSinceEpoch(player['lastlogoff'] * 1000);
+              ultimoLogin = DateFormat('dd/MM/yyyy HH:mm').format(date);
+            }
+          });
+        }
+      }
+    } catch (e) {
+      print("Erro: $e");
+    }
+  }
+
+  // Função para abrir o link
+  Future<void> abrirLink() async {
+    if (profileUrl != "...") {
+      final Uri url = Uri.parse(profileUrl);
+      if (!await launchUrl(url)) {
+        throw Exception('Não foi possível abrir $url');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Appbar(nome: "Nome Usuário"),
+      appBar: Appbar(nome: nomeUsuario),
       backgroundColor: Color.fromARGB(255, 35, 72, 147),
       body: Center(
         child: Padding(
@@ -26,7 +111,7 @@ class Perfil extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   child: Image.network(
-                    "https://wallpapers.com/images/hd/best-profile-pictures-wqm0z83avja0y31c.jpg",
+                    avatarUrl,
                     fit: BoxFit.cover,
                     scale: 1,
                     height: 150,
@@ -35,20 +120,19 @@ class Perfil extends StatelessWidget {
                 ),
               ),
               Text(
-                "Nome Usuário",
+                nomeUsuario,
                 style: TextStyle(
                   color: Color.fromARGB(255, 146, 146, 146),
                   fontSize: 24,
                 ),
               ),
               Text(
-                "Status",
+                status,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 29, 161, 57),
+                  color: corStatus,
                   fontSize: 20,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
@@ -60,17 +144,13 @@ class Perfil extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      "Perfil público",
+                      visibilidade,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 2,
-                width: double.infinity,
-                child: ColoredBox(color: Colors.white),
-              ),
+              SizedBox(height: 2, width: double.infinity, child: ColoredBox(color: Colors.white)),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
@@ -88,7 +168,7 @@ class Perfil extends StatelessWidget {
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         Text(
-                          "25/10/2025 16:59",
+                          ultimoLogin,
                           style: TextStyle(
                             color: Color.fromARGB(255, 146, 146, 146),
                             fontSize: 13,
@@ -99,60 +179,52 @@ class Perfil extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 2,
-                width: double.infinity,
-                child: ColoredBox(color: Colors.white),
-              ),
+              SizedBox(height: 2, width: double.infinity, child: ColoredBox(color: Colors.white)),
+              
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.link,
-                              color: Color.fromARGB(255, 146, 146, 146),
-                            ),
-                            // SizedBox(width: 5),
-                            Text(
-                              "Link do Perfil",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
+                        Icon(
+                          Icons.link,
+                          color: Color.fromARGB(255, 146, 146, 146),
                         ),
                         Text(
-                          "https://steamcommunity.com/profiles/76561198789100608/",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 0, 31, 89),
-                            fontSize: 10,
-                          ),
+                          "Link do Perfil (Toque para abrir)",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ],
+                    ),
+                    InkWell(
+                      onTap: abrirLink,
+                      child: Text(
+                        profileUrl,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          decoration: TextDecoration.underline, 
+                          fontSize: 12,
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 2,
-                width: double.infinity,
-                child: ColoredBox(color: Colors.white),
-              ),
+
+              SizedBox(height: 2, width: double.infinity, child: ColoredBox(color: Colors.white)),
               SizedBox(height: 10),
-              Container(
+              SizedBox(
                 height: 40,
                 width: 160,
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Jogos()),
+                      MaterialPageRoute(
+                          builder: (context) => Jogos(steamId: widget.steamId)),
                     );
                   },
                   style: TextButton.styleFrom(
