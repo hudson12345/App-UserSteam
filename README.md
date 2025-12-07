@@ -70,7 +70,7 @@ Devido às restrições CORS ao acessar a Steam Web API via navegador, é necess
 ### Video do Aplicativo:
 
 <video controls width="400">
-  <source src="https://github.com/hudson12345/App-UserSteam/raw/main/video_app.mp4" type="video/mp4">
+  [<source src="https://github.com/hudson12345/App-UserSteam/raw/main/video_app.mp4" type="video/mp4">](https://github.com/hudson12345/App-UserSteam/raw/main/video_app.mp4)
 </video>
 
 ### Link do Figma: 
