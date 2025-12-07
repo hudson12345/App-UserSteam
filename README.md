@@ -31,6 +31,14 @@ O aplicativo consome a Steam Web API para obter os dados.
 ### Autenticação:
 
 * É preciso uma **chave de API (API Key)**, para fazer requisições. Essa chave é enviada como parâmetro `key` nas URLs das APIs.
+* A API key do repositório foi revogada e não funciona, sendo necessário troca-la para funcionar.
+
+### Como Rodar:
+
+Devido às restrições de segurança de navegadores ao acessar a API da Steam diretamente, o projeto não funcionará se você apenas apertar F5 ou der o run padrão, pois a API da steam foi feita para servidores conversarem entre si, não para navegadores.
+
+* É preciso utilizar esse comando `flutter run -d chrome --web-browser-flag "--disable-web-security"`, que desliga a segurança do navegador contra CORS (Cross-Origin Resource Sharing).
+
 
 ### Endpoints Utilizados:
 
@@ -54,6 +62,7 @@ O aplicativo consome a Steam Web API para obter os dados.
        * `playtime_forever` - Number(JSON)/int(Dart): O tempo total que o usuário jogou este jogo, em minutos.
        * `img_icon_url` - String: O hash da URL completa do ícone do jogo..
        * `rtime_last_played` - Number(JSON)/int(Dart): O timestamp Unix da última vez que o usuário jogou este jogo.
+
   
 ### Fluxo do Aplicativo:
 
