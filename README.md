@@ -67,11 +67,8 @@ Devido às restrições CORS ao acessar a Steam Web API via navegador, é necess
 
 <img width="843" height="722" alt="Fluxo do App" src="https://github.com/user-attachments/assets/688bc1de-ff0f-45f8-bc34-deb2d2d15d49" />
 
-### Video do Aplicativo:
-
-<video controls width="400">
-  [<source src="https://github.com/hudson12345/App-UserSteam/raw/main/video_app.mp4" type="video/mp4">](https://github.com/hudson12345/App-UserSteam/raw/main/video_app.mp4)
-</video>
+### Link do Video do App: 
+* [**Figma**](https://drive.google.com/file/d/1b2QyO8On31VsP0zcaUHJuVN-XU3qSO4u/view?usp=sharing)
 
 ### Link do Figma: 
 * [**Figma**](https://www.figma.com/design/Sx7GLDPfDfecRhYXeTA5Da/AppAPI?node-id=0-1&t=BE5jitiHRgEvnU2v-1)
