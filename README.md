@@ -37,7 +37,8 @@ O aplicativo utiliza a Steam Web API para obter os dados.
 
 ### Como Rodar:
 
-Devido às restrições CORS ao acessar a Steam Web API via navegador, é necessário rodar com a flag: `flutter run -d chrome --web-browser-flag="--disable-web-security"`
+Devido às restrições CORS ao acessar a Steam Web API via navegador, é necessário rodar com a flag: 
+`flutter run -d chrome --web-browser-flag="--disable-web-security"`
 
 ### Endpoints Utilizados
 
@@ -65,6 +66,7 @@ Devido às restrições CORS ao acessar a Steam Web API via navegador, é necess
 ### Fluxo do Aplicativo:
 
 <img width="843" height="722" alt="Fluxo do App" src="https://github.com/user-attachments/assets/688bc1de-ff0f-45f8-bc34-deb2d2d15d49" />
+
 
 ### Link do Figma: 
 * [**Figma**](https://www.figma.com/design/Sx7GLDPfDfecRhYXeTA5Da/AppAPI?node-id=0-1&t=BE5jitiHRgEvnU2v-1)
