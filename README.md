@@ -75,7 +75,7 @@ Devido às restrições de segurança de navegadores ao acessar a API da Steam d
 
 ## Telas da Aplicação na Wiki:
 
-* [**Tela Inicial**](https://github.com/hudson12345/App-UserSteam/wiki/Página-Inicial)
+* [**Tela Inicial**](https://github.com/hudson12345/App-UserSteam/wiki/Tela-Inicial)
 * [**Tela de Perfil**](https://github.com/hudson12345/App-UserSteam/wiki/Perfil)
 * [**Tela de Jogos**](https://github.com/hudson12345/App-UserSteam/wiki/Jogos)
 * [**Tela de Créditos**](https://github.com/hudson12345/App-UserSteam/wiki/Créditos)
