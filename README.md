@@ -38,6 +38,7 @@ O aplicativo utiliza a Steam Web API para obter os dados.
 ### Como Rodar:
 
 Devido às restrições CORS ao acessar a Steam Web API via navegador, é necessário rodar com a flag: 
+
 `flutter run -d chrome --web-browser-flag="--disable-web-security"`
 
 ### Endpoints Utilizados
